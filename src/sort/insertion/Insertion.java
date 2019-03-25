@@ -18,25 +18,18 @@ public class Insertion {
     }
 
     static void sort(Integer[] array, String orderBy) {
-
-        Integer select;
-        for (int i = 0; i < array.length - 1; i++) {
-            select = i;
-            for (int j = i + 1; j < array.length; j++) {
-                if (orderBy.equals("ASC") && array[select] > array[j])
-                    select = j;
-                if (orderBy.equals("DESC") && array[select] < array[j])
-                    select = j;
+        for (int i = 1; i < array.length; i++) {
+            int tempValue = array[i];
+            int j = i - 1;
+            while (j >= 0
+                    && ((orderBy.equals("DESC") && tempValue > array[j])
+                    || (orderBy.equals("ASC") && tempValue < array[j]))) {
+                array[j + 1] = array[j];
+                j--;
             }
-            swap(array, i, select);
+            array[j + 1] = tempValue;
         }
-    }
 
-    static void swap(Integer[] array, int i, int j) {
-        Integer temp = null;
-        temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
     }
 
 }

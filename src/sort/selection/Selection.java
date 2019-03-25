@@ -18,7 +18,6 @@ public class Selection {
     }
 
     static void sort(Integer[] array, String orderBy) {
-
         Integer select;
         for (int i = 0; i < array.length - 1; i++) {
             select = i;
